@@ -9,6 +9,10 @@ theme = Catppuccin Mocha
 background = #181825
 unfocused-split-opacity = 1
 
+# Brighter text selection (default catppuccin selection is too subtle)
+selection-background = #264f78
+selection-foreground = #cdd6f4
+
 scrollback-limit = 10000
 
 # Show link previews on hover
