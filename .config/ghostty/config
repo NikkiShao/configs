@@ -1,0 +1,46 @@
+command = direct:/opt/homebrew/bin/tmux new -A -s main
+title = terminal
+
+window-padding-x = 8
+window-padding-y = 4
+
+# Catppuccin Mocha
+theme = Catppuccin Mocha
+background = #181825
+unfocused-split-opacity = 1
+
+scrollback-limit = 10000
+
+# Show link previews on hover
+link-previews = true
+
+macos-option-as-alt = left
+
+# Global hotkey to toggle Ghostty visibility
+keybind = global:ctrl+grave_accent=toggle_quick_terminal
+
+# # Move lines with Cmd+J/K (sends Alt+J/K)
+# keybind = cmd+j=text:\x1bJ
+# keybind = cmd+k=text:\x1bK
+# # Duplicate lines with Cmd+Shift+J/K (sends Alt+j/k)
+# keybind = cmd+shift+j=text:\x1bj
+# keybind = cmd+shift+k=text:\x1bk
+
+# Unbind Cmd+D (default splits pane) and send custom sequence for vim-visual-multi
+keybind = cmd+d=text:\x1bd
+
+# newline with Shift+Enter (sends literal newline character)
+keybind = shift+enter=text:\n
+
+# Bell notifications (dock bounce only, no border)
+bell-features = attention
+
+# Desktop notifications via OSC 9
+desktop-notifications = true
+
+# Shaders
+# custom-shader = shaders/cursor_blaze_tapered.glsl
+custom-shader = shaders/cursor_phantom.glsl
+# custom-shader = shaders/cursor_smear.glsl
+# custom-shader = shaders/shake.glsl
+# custom-shader = shaders/cursor_chaos.glsl

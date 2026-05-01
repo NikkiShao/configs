@@ -1,0 +1,43 @@
+{
+    "$schema": "https://opencode.ai/config.json",
+    "share": "disabled",
+    "disabled_providers": [
+        "openai",
+        "gemini",
+        "opencode"
+    ],
+    "provider": {
+        "genaistudio": {
+            "npm": "@ai-sdk/openai-compatible",
+            "name": "Gen AI Studio",
+            "options": {
+                "baseURL": "https://api.studio.genai.cba",
+                "apiKey": ""
+            },
+            "models": {
+                "aipe-bedrock-claude-4-sonnet": {
+                    "name": "AIPE Bedrock Claude 4 Sonnet"
+                },  
+                "aipe-bedrock-claude-4-5-sonnet": {
+                    "name": "AIPE Bedrock Claude 4.5 Sonnet"
+                },
+                "aipe-bedrock-claude-4-5-haiku": {
+                    "name": "AIPE Bedrock Claude 4.5 Haiku"
+                }
+            }
+        },
+        "portkey": {
+            "npm": "@ai-sdk/openai-compatible",
+            "name": "PortKey",
+            "options": {
+                "baseURL": "https://d-s-genai-pkgw-alb.dotdtetp01dev01.aws.test.au.internal.cba/v1",
+                "apiKey": ""
+            },
+            "models": {
+                "@dev-emergingtechplatform1-bedrock-useast1/us.anthropic.claude-sonnet-4-5-20250929-v1:0": {
+                    "name": "US Anthropic Claude 4.5 Sonnet"
+                }
+            }
+        }
+    }
+}
