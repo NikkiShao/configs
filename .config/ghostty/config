@@ -2,12 +2,18 @@ command = direct:/opt/homebrew/bin/tmux new -A -s main
 title = terminal
 
 window-padding-x = 8
-window-padding-y = 4
+window-padding-y = 16
 
-# Catppuccin Mocha
-theme = Catppuccin Mocha
-background = #181825
+# Taller line height (also makes status-bar pills look chunkier)
+adjust-cell-height = 25%
+
+# Catppuccin Frappe (matches tmux active-pane background)
+theme = Catppuccin Frappe
+background = #303446
 unfocused-split-opacity = 1
+
+# Hide the macOS titlebar/traffic-lights entirely
+macos-titlebar-style = hidden
 
 # Brighter text selection (default catppuccin selection is too subtle)
 selection-background = #264f78
@@ -30,11 +36,33 @@ keybind = global:ctrl+grave_accent=toggle_quick_terminal
 # keybind = cmd+shift+j=text:\x1bj
 # keybind = cmd+shift+k=text:\x1bk
 
-# Unbind Cmd+D (default splits pane) and send custom sequence for vim-visual-multi
-keybind = cmd+d=text:\x1bd
+# Cmd+D / Cmd+Shift+D : tmux pane splits
+#   Cmd+D       = vertical split   (side-by-side, left/right)  -> tmux prefix + v (bind v split-window -h)
+#   Cmd+Shift+D = horizontal split (top/bottom)                -> tmux prefix + s (bind s split-window -v)
+keybind = cmd+d=text:\x1bav
+keybind = cmd+shift+d=text:\x1bas
 
-# newline with Shift+Enter (sends literal newline character)
-keybind = shift+enter=text:\n
+# Cmd+Shift+M : vim-visual-multi (sends Alt+D, caught by visual-multi.lua's <M-d> mapping)
+keybind = cmd+shift+m=text:\x1bd
+
+# Cmd+T: new tmux window in current path (sends prefix M-a + c)
+keybind = cmd+t=text:\x1bac
+# Cmd+W: close current tmux window (sends prefix M-a + X)
+keybind = cmd+w=text:\x1baX
+# Cmd+Shift+W: close current tmux pane (sends prefix M-a + x — tmux default kill-pane w/ confirm)
+keybind = cmd+shift+w=text:\x1bax
+# Cmd+, / Cmd+. : previous/next tmux window (overrides Ghostty's open-config default)
+# Sends tmux prefix M-a (\x1ba) + , or . — see tmux.conf bind , / bind .
+# Use literal , and . in trigger (super+, not super+comma) and \x2c/\x2e in payload
+keybind = cmd+,=text:\x1ba\x2c
+keybind = cmd+.=text:\x1ba\x2e
+# Reassign open-config to Cmd+Shift+E (since Cmd+, is now taken)
+keybind = cmd+shift+e=open_config
+# Reload config (picks up shader edits — pair with `ghostty-pet` script)
+keybind = cmd+shift+r=reload_config
+
+# newline with Shift+Enter (Esc+Enter, recognised by Claude Code etc as multi-line insert)
+keybind = shift+enter=text:\x1b\r
 
 # Bell notifications (dock bounce only, no border)
 bell-features = attention
